@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos com Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Canvas para os gráficos -->
+    <canvas id="rendimentoRealChart" width="400" height="200"></canvas>
+    <canvas id="crescimentoVinculoChart" width="400" height="200"></canvas>
+    <canvas id="crescimentoSetorChart" width="400" height="200"></canvas>
+    <canvas id="giniChart" width="400" height="200"></canvas>
+
+    <script>
+        // Gráfico de Linha - Rendimento Médio Real
+        const ctxRendimentoReal = document.getElementById('rendimentoRealChart').getContext('2d');
+        const rendimentoRealChart = new Chart(ctxRendimentoReal, {
+            type: 'line',
+            data: {
+                labels: ['Junho 2023', 'Dezembro 2023', 'Janeiro 2024'],
+                datasets: [{
+                    label: 'Rendimento Médio Real (R$)',
+                    data: [3078, 3100, 3118],
+                    borderColor: 'blue',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { 
+                        beginAtZero: false
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Barras - Crescimento Anual por Tipo de Vínculo
+        const ctxCrescimentoVinculo = document.getElementById('crescimentoVinculoChart').getContext('2d');
+        const crescimentoVinculoChart = new Chart(ctxCrescimentoVinculo, {
+            type: 'bar',
+            data: {
+                labels: ['Empregados sem carteira assinada', 'Autônomos', 'Setor Público', 'Empregados com carteira assinada'],
+                datasets: [{
+                    label: 'Crescimento Anual (%)',
+                    data: [7.2, 1.0, 3.8, 2.7],
+                    backgroundColor: 'skyblue'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Barras - Crescimento Anual por Setor
+        const ctxCrescimentoSetor = document.getElementById('crescimentoSetorChart').getContext('2d');
+        const crescimentoSetorChart = new Chart(ctxCrescimentoSetor, {
+            type: 'bar',
+            data: {
+                labels: ['Transporte', 'Construção', 'Indústria', 'Comércio', 'Administração Pública', 'Agricultura'],
+                datasets: [{
+                    label: 'Crescimento Anual (%)',
+                    data: [-1.7, -3.8, 4.5, 4.5, 4.5, 0.9],
+                    backgroundColor: 'salmon'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Linha - Índice de Gini
+        const ctxGini = document.getElementById('giniChart').getContext('2d');
+        const giniChart = new Chart(ctxGini, {
+            type: 'line',
+            data: {
+                labels: ['1T 2022', '2T 2022', '3T 2022', '4T 2022', '1T 2023', '2T 2023', '3T 2023', '4T 2023'],
+                datasets: [{
+                    label: 'Índice de Gini Renda Domiciliar',
+                    data: [0.520, 0.518, 0.515, 0.510, 0.505, 0.510, 0.518, 0.523],
+                    borderColor: 'green',
+                    fill: false,
+                    tension: 0.1
+                },
+                {
+                    label: 'Índice de Gini Renda Individual',
+                    data: [0.490, 0.488, 0.485, 0.482, 0.480, 0.478, 0.492, 0.495],
+                    borderColor: 'red',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: false
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>
+
